@@ -1,0 +1,22 @@
+server:
+  port: 8082
+spring:
+  # json日期转换格式
+  jackson:
+    # 也是DateTimeUtil工具类的转换格式
+    date-format: yyyy-MM-dd HH:mm:ss
+    timezone: GMT+8
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/gzmtu_monster_test?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: 19990807
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+
+
+jwt:
+  secret: secret
+  expiration: 7200000
+  token: Authorization

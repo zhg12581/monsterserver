@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mapper.AdminMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.entity.AdminDO">
+        <id column="id" property="id" />
+        <result column="user_name" property="userName" />
+        <result column="password" property="password" />
+        <result column="name" property="name" />
+        <result column="status" property="status" />
+        <result column="login_ip_addr" property="loginIpAddr" />
+        <result column="login_time" property="loginTime" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="getAdminByUserName" resultMap="BaseResultMap">
+        SELECT * FROM admin where user_name=#{userName};
+    </select>
+
+    <insert id="insert" parameterType="com.example.entity.AdminDO" useGeneratedKeys="true" keyProperty="id">
+        insert into
+            admin(user_name,password,name,login_ip_addr,login_time)
+        values
+            (#{userName},#{password},#{name},#{loginIpAddr},#{loginTime})
+    </insert>
+
+    <update id="update" parameterType="com.example.entity.AdminDO">
+       update admin set name=#{name},login_ip_addr=#{loginIpAddr},login_time=#{loginTime}
+       where id=#{id}
+    </update>
+
+
+</mapper>
